@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticiero Deportes</title>
+    <style>
+        /* Estilos base (manteniendo tus estilos originales) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* MENÚ LATERAL (manteniendo exactamente tus estilos originales) */
+        .sidebar {
+          position: fixed;
+          left: -250px;
+          top: 0;
+          width: 250px;
+          height: 100%;
+          background: #16213e;
+          transition: left 0.5s;
+          z-index: 1000;
+          padding: 20px;
+          color: white;
+          overflow-y: auto;
+        }
+        .sidebar.active {
+         left: 0;
+        }
+        .menu-btn {
+         position: fixed;
+         left: 15px;
+         top: 15px;
+         font-size: 24px;
+         cursor: pointer;
+         z-index: 1001;
+         background: none;
+         border: none;
+         color: white;
+        }
+        body.menu-active {
+         margin-left: 250px;
+        }
+        .sidebar h2 {
+         color: #4cc9f0;
+         border-bottom: 1px solid #4cc9f0;
+         padding-bottom: 10px;
+        }
+        .sidebar ul {
+         list-style: none;
+         padding: 0;
+        }
+        .sidebar li {
+         padding: 8px 0;
+         border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar a {
+         color: white;
+         text-decoration: none;
+         display: block;
+         padding: 5px 0;
+        }
+        .sidebar a:hover {
+          color: #4cc9f0;
+        } 
+        
+        /* NUEVOS ESTILOS PERIODÍSTICOS (similar a la imagen) */
+        header {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #e63946;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #16213e;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: #4cc9f0;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #4cc9f0;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        /* Estilo de noticias similar a la imagen */
+        .noticia-destacada {
+            background-color: #fff;
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 5px solid #e63946;
+        }
+        
+        .noticia-destacada h1 {
+            color: #e63946;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .noticia-destacada img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .noticia-destacada h2 {
+            color: #16213e;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .noticia-destacada p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        /* Estilo para separadores como en la imagen */
+        .separador {
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .separador:after {
+            content: "•••";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f5f5f5;
+            padding: 0 15px;
+            color: #999;
+            font-size: 1.2em;
+        }
+        
+        /* Footer estilo periodístico */
+        footer {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 3px solid #e63946;
+        }
+        
+        .redes-sociales h3 {
+            margin-bottom: 20px;
+            color: #4cc9f0;
+            font-size: 1.3em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .redes-lista {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        
+        .redes-lista a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        
+        .redes-lista a:hover {
+            color: #4cc9f0;
+            text-decoration: underline;
+        }
+        
+        .contacto p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+        
+        .enlaces-legales {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .enlaces-legales a {
+            color: #a8dadc;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+        
+        .enlaces-legales a:hover {
+            color: #4cc9f0;
+            text-decoration: underline;
+        }
+        
+        .derechos {
+            font-size: 0.85em;
+            color: rgba(255,255,255,0.7);
+            margin-top: 20px;
+        }
+        
+        /* Overlay para el menú móvil */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+    /* Estilo para los círculos de toque */
+    .toque-efecto {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(76, 201, 240, 0.6);
+      pointer-events: none;
+      animation: expandir 0.5s ease-out forwards;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+
+    @keyframes expandir {
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(5);
+      }
+    }
+
+  .toque-efecto {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    animation: toque-animacion 0.5s ease-out;
+    z-index: 9999;
+  }
+  
+  @keyframes toque-animacion {
+    to {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  /* Mejora para dispositivos táctiles */
+  html {
+    touch-action: manipulation;
+  }
+
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                font-size: 0.8em;
+            }
+            
+            .noticia-destacada {
+                padding: 20px;
+            }
+            
+            .noticia-destacada h1 {
+                font-size: 1.7em;
+            }
+            
+            .noticia-destacada h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SECCION BOXEO</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="deportes.html">Deportes</a>
+        <a href="novedades.html">Novedades</a>
+        <a href="tendencias.html">Tendencias</a>
+        <a href="ultima hora.html">Última Hora</a>             
+        <a href="mas relevante.html">Más Relevante</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+   <p style="font-family: 'Verdana', sans-serif;"> 
+ <h2>Controversia entre De La Hoya y Reynoso</h2>
+             
+                Óscar de la Hoya criticó a Eddy Reynoso tras el positivo por 
+                dopaje de Jaime Munguía y acusó al equipo Canelo de falta de ética 
+                deportiva y complicidad con figuras como Dana White 
+                <div style="text-align: center;">
+                <img src="imagenes\eddy.jpg" width="500" height="300" >
+                </div>
+                
+            Controversia entre Óscar De La Hoya y Eddy Reynoso: Tensiones en la cima del boxeo
+
+La rivalidad entre Óscar De La Hoya y Eddy Reynoso ha resurgido con fuerza en el entorno del 
+boxeo profesional, desatando un debate encendido sobre ética deportiva, manejo de peleadores 
+y la credibilidad de los equipos técnicos de élite. Lo que comenzó como diferencias profesionales 
+ha escalado a acusaciones directas y polémicas declaraciones, reflejando una grieta profunda 
+entre dos figuras influyentes del deporte.
+Antecedentes: De La Hoya, Canelo y el rompimiento
+Óscar De La Hoya, ex campeón mundial y presidente de Golden Boy Promotions, 
+fue el promotor principal de Saúl "Canelo" Álvarez durante gran parte de su carrera. 
+Sin embargo, en 2020, la relación entre ambos se deterioró. Canelo rompió con Golden Boy, 
+alegando falta de transparencia y control sobre sus combates. Desde entonces, su carrera 
+ha sido manejada por su propio equipo, encabezado por Eddy Reynoso, su entrenador y mánager de confianza.
+El quiebre no solo fue contractual, sino también personal: De La Hoya ha acusado en varias ocasiones 
+a Reynoso de ser una mala influencia y de bloquear la comunicación con el peleador. 
+Reynoso, por su parte, ha evitado responder directamente, aunque en círculos del boxeo
+ se ha señalado que el rompimiento con Golden Boy fue motivado por la necesidad de mayor autonomía.
+<br>
+El detonante reciente: Caso Jaime Munguía
+La controversia se reavivó recientemente tras el positivo por sustancias prohibidas del boxeador mexicano 
+Jaime Munguía, quien es parte del entorno cercano de Reynoso y ha sido asesorado por él en distintas 
+etapas de su carrera. Munguía arrojó un resultado adverso en un control antidopaje previo a su combate 
+con Canelo, lo que encendió las alarmas sobre el control médico y ético en los campamentos de entrenamiento manejados por Reynoso.
+Óscar De La Hoya no tardó en pronunciarse públicamente. En redes sociales y entrevistas, acusó a Reynoso 
+de “encubrir prácticas peligrosas”, y fue más allá al declarar:“El equipo de Canelo se ha convertido 
+en una empresa que se escuda en el silencio. Lo de Munguía no es un accidente, es una señal de algo más profundo. 
+Y Eddy Reynoso debería rendir cuentas.”
+<br>
+¿Quién es Eddy Reynoso?
+<div style="text-align: center;">
+<img src="imagenes\eddy.png" width="500" height="300">
+</div>
+Eddy Reynoso es reconocido como uno de los entrenadores más exitosos de la última década. 
+Bajo su tutela, Canelo Álvarez se ha convertido en campeón mundial en cuatro divisiones, 
+y otros peleadores como Ryan García, Andy Ruiz Jr. y Óscar Valdez han pasado por su gimnasio. Su estilo 
+meticuloso y enfoque técnico le han valido respeto, pero también críticas por su tendencia a centralizar decisiones
+ y mantener un **entorno cerrado a los medio.
+ 
+ <br>
+
+De La Hoya redobla críticas al entorno Canelo
+El expresidente de Golden Boy no solo señaló a Reynoso, sino que extendió sus críticas a figuras 
+cercanas al equipo de Canelo, como **Dana White**, presidente de UFC, y ciertos promotores vinculados 
+a DAZN y Showtime. Afirmó que existe un “pacto de protección mutua” que mantiene a ciertas figuras libres de sanciones reales.
+“Están jugando con la integridad del boxeo. No podemos permitir que la fama justifique el dopaje ni 
+que la popularidad eclipse la ética”, dijo De La Hoya en una entrevista a Boxing Scene.
+Implicaciones para el boxeo mexicano
+Este enfrentamiento entre dos titanes del boxeo nacional ocurre en un momento delicado para México. Con Canelo 
+entrando en una etapa más madura de su carrera, y con Munguía, Valdez y García como los posibles sucesores, las divisiones internas podrían afectar la consolidación de una nueva generación dorada.
+Además, se plantea una **pregunta importante**: ¿están los boxeadores realmente protegidos o están siendo 
+parte de un sistema que prioriza el dinero sobre la salud y la honestidad?.
+
+
+</p>
+ <footer>
+        <div class="redes-sociales">
+            <h3>Síguenos en:</h3>
+            <ul class="redes-lista">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">YouTube</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">TikTok</a></li>
+                <li><a href="#">Suscríbete al Newsletter</a></li>
+            </ul>
+        </div>
+        
+        <div class="contacto">
+            <p>Contacto@notideport.com.mx | Tel: +52 446 425 8678</p>
+        </div>
+        
+        <div class="enlaces-legales">
+            <a href="#">Derechos de réplica</a>
+            <a href="#">Código de Ética</a>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Aviso de Privacidad</a>
+            <a href="#">Sala de Prensa</a>
+        </div>
+        
+        <div class="derechos">
+            <p>Derechos reservados © 2025 Noticiero de Deportes</p>
+        </div>
+    </footer>
+     <script>
+   // Efecto de toque mejorado
+  function crearToque(x, y) {
+    const circulo = document.createElement("div");
+    circulo.classList.add("toque-efecto");
+    circulo.style.left = `${x}px`;
+    circulo.style.top = `${y}px`;
+    document.body.appendChild(circulo);
+    
+    // Eliminar después de la animación
+    circulo.addEventListener('animationend', () => {
+      circulo.remove();
+    });
+  }
+
+  // Controlador para clics (ratón)
+  document.addEventListener("click", (e) => {
+    if (e.target.tagName === 'A' || e.target.closest('a')) return;
+    crearToque(e.clientX, e.clientY);
+  });
+
+  // Controlador mejorado para toques
+  document.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    crearToque(touch.clientX, touch.clientY);
+    
+    // Permitir scroll pero mantener el efecto
+    if (e.cancelable) {
+      e.preventDefault();
+    }
+  }, { passive: false }); // Cambiado a false para permitir preventDefault
+
+  // Manejar el movimiento para no interferir con el scroll
+  document.addEventListener("touchmove", (e) => {
+    // Puedes añadir lógica adicional aquí si necesitas
+  }, { passive: true });
+      </script>
+</body>
+</html>
