@@ -1,302 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticiero Deportes - Boxeo</title>
-    <style>
-        /* Estilos base mejorados */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        /* Header estilo deportivo */
-        header {
-            background-color: #1a1a2e;
-            color: #fff;
-            padding: 25px 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            border-bottom: 3px solid #e63946;
-            position: relative;
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Navegación mejorada */
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #16213e;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 0.5px;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        nav a:hover {
-            color: #4cc9f0;
-            background: rgba(76, 201, 240, 0.1);
-        }
-        
-        nav a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #4cc9f0;
-            transition: width 0.3s;
-        }
-        
-        nav a:hover:after {
-            width: 100%;
-        }
-        
-        /* Contenido principal estilo deportivo */
-        .contenido-principal {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-        
-        .seccion-boxeo {
-            background-color: #fff;
-            margin-bottom: 40px;
-            padding: 30px;
-            border-radius: 4px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            border-left: 5px solid #e63946;
-        }
-        
-        .seccion-boxeo h2 {
-            color: #1a1a2e;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.3;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-        }
-        
-        .seccion-boxeo p {
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            line-height: 1.7;
-            color: #333;
-            padding-left: 15px;
-            position: relative;
-        }
-        
-        .seccion-boxeo p:before {
-            content: "";
-            position: absolute;
-            left: -5px;
-        }
-        
-        .destacado {
-            background-color: rgba(230, 57, 70, 0.1);
-            padding: 15px;
-            border-left: 3px solid #e63946;
-            margin: 20px 0;
-            font-weight: 500;
-        }
-        
-        /* Footer profesional */
-        footer {
-            background-color: #1a1a2e;
-            color: #fff;
-            padding: 30px 0;
-            text-align: center;
-            margin-top: 50px;
-            border-top: 3px solid #e63946;
-        }
-        
-        footer h4 {
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-        
-        footer p {
-            color: #a8dadc;
-            font-size: 1em;
-            margin-bottom: 0;
-        }
-        
-    /* Estilo para los círculos de toque */
-    .toque-efecto {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(76, 201, 240, 0.6);
-      pointer-events: none;
-      animation: expandir 0.5s ease-out forwards;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sección Boxeo</title>
+<style>
+    /* Estilo general de la sección */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #000; /* Negro de fondo */
+        color: #fff;
+        margin: 0;
+        padding: 0;
     }
 
-    @keyframes expandir {
-      to {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(5);
-      }
+    .boxeo-section {
+        text-align: center;
+        padding: 50px 20px;
+        background: linear-gradient(180deg, #000 0%, #111 100%);
     }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            
-            nav {
-                flex-wrap: wrap;
-                padding: 10px 0;
-            }
-            
-            nav a {
-                margin: 5px 10px;
-                font-size: 0.8em;
-                padding: 6px 12px;
-            }
-            
-            .seccion-boxeo {
-                padding: 20px;
-            }
-            
-            .seccion-boxeo h2 {
-                font-size: 1.5em;
-            }
-        }
-    </style>
+    /* Título dorado con borde rojo */
+    .boxeo-section h1 {
+        color: #FFD700; /* Dorado */
+        border: 3px solid #FF0000; /* Rojo */
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+
+    /* Cards de boxeadores / información */
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .card {
+        background-color: #111;
+        border: 2px solid #FFD700; /* Dorado */
+        border-radius: 15px;
+        width: 250px;
+        padding: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px #FF0000; /* Glow rojo al pasar el mouse */
+    }
+
+    .card img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .card h2 {
+        color: #FFD700; /* Dorado */
+        margin: 10px 0;
+    }
+
+    .card p {
+        color: #fff;
+        font-size: 0.9em;
+    }
+
+    /* Botones estilo boxeo */
+    .btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #FF0000; /* Rojo */
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #FFD700; /* Dorado */
+        color: #000;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Sección de Boxeo</h1>
-    </header>
-    
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="deportes.html">Deportes</a>
-        <a href="novedades.html">Novedades</a>
-        <a href="tendencias.html">Tendencias</a>
-        <a href="ultima hora.html">Última Hora</a>             
-        <a href="mas relevante.html">Más Relevante</a>
-        <a href="contacto.html">Contacto</a>
-    </nav>
-    
-    <div class="contenido-principal">
-        <article class="seccion-boxeo">
-            <h2>Resultados Recientes</h2>
-            <div style="text-align: center;">
-             <img src="data:image/jpeg;base64,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" width="350" height="250" alt="boxeo">
-            <p>Canelo Álvarez gana por decisión unánime contra Jermall Charlo en un combate que duró los 12 rounds completos.</p>
-            </div>
-            <div class="destacado">
-                Tyson Fury vence a Oleksandr Usyk en una épica batalla de 12 rounds que mantuvo a los espectadores al borde de sus asientos.
-            </div>
-            
-            <p>Naoya Inoue retiene su título de peso gallo ante Stephen Fulton por KO técnico en el octavo round.</p>
-        </article>
 
-        <article class="seccion-boxeo">
-            <h2>Noticias Destacadas</h2>
-            <p>¡Jake Paul desafía a Conor McGregor a una pelea histórica que podría realizarse a finales de 2024!
-                JAKE PAUL SUPERA A MIKE TYSON: ¿PRÓXIMO OBJETIVO, CONOR MCGREGOR?
-             El 16 de noviembre, Jake Paul sorprendió al mundo al vencer a Mike Tyson por decisión unánime en un combate que no 
-             cumplió con las expectativas previas. A pesar de las especulaciones sobre un posible regreso a su mejor nivel por parte de Tyson,
-             Paul dominó claramente el cuadrilátero, con tarjetas de 80-72, 79-73 y 79-73 a su favor, dejando en claro su potencial como boxeador profesional.
-
-            Con esta victoria, Jake Paul ha consolidado su lugar como una de las figuras más polémicas y mediáticas del boxeo, y parece que no tiene intenciones 
-            de frenar su impulso. Según diversos reportes, Paul estaría ya concentrado en su próximo reto: un combate con Conor McGregor, el irlandés multicampeón de UFC.
-            </p>
-            
-            <p>El mexicano Isaac "Pitbull" Cruz busca el título mundial de peso ligero en su próximo combate programado para noviembre,
-                enfrentará al argentino Matías Romero en el duelo coestelar de una función este próximo sábado 
-                13 de marzo, en la “Mohegan Sun Arena”, de esta localidad de Connecticut.
-                Cruz (20-1-1, 15 KOs), quien fue programado originalmente contra un adversario español regresa al ring tras la actuación más impresionante de su carrera.
-                Ello sucedió en el primer round de su pelea ante el duro y muy cotizado contendiente mundial Diego Magdaleno, en octubre pasado.
-                Originario de la Ciudad de México, Isaac “Pitbull” Cruz, de 22 años, busca otro importante triunfo en peso ligero para acercarse a una oportunidad por 
-                un título mundial.
-                Cruz se convirtió en profesional en 2015 a la edad de 16 años y perdió por única vez un año después, pero su estilo agresivo lo ha mantenido invicto 
-                durante los últimos cinco años.
-            </p>
-            
-            <div class="destacado">
-                Anthony Joshua y Deontay Wilder finalmente firmaron para enfrentarse en diciembre en Arabia Saudita, en uno de los combates más esperados del año.
-            </div>
-            
-            <p>La Asociación Mundial de Boxeo anuncia nuevas regulaciones para proteger la salud de los boxeadores.</p>
-        </article>
-        
-        <a href="eventos.html" style="text-decoration: none; color: inherit;">
-        <article class="seccion-boxeo">
-            <h2>Próximos Eventos</h2>
-            <p>15 Octubre: Terence Crawford vs. Errol Spence Jr. - Revancha por el título welter unificado.</p>
-            <p>28 Octubre: Ryan García regresa al ring contra el excampeón mundial Javier Fortuna.</p>
-            <p>10 Noviembre: Combate femenino por el título entre Amanda Serrano y Katie Taylor II.</p>
-        </article>
-        </a>
+<section class="boxeo-section">
+    <h1>Boxeo Destacado</h1>
+    <div class="cards">
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150.png?text=Boxeador+1" alt="Boxeador 1">
+            <h2>Boxeador 1</h2>
+            <p>Campeón de peso ligero, con 20 victorias y 2 derrotas.</p>
+            <button class="btn">Ver Perfil</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150.png?text=Boxeador+2" alt="Boxeador 2">
+            <h2>Boxeador 2</h2>
+            <p>Campeón de peso medio, invicto en 15 combates.</p>
+            <button class="btn">Ver Perfil</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150.png?text=Boxeador+3" alt="Boxeador 3">
+            <h2>Boxeador 3</h2>
+            <p>Especialista en knockouts, con récord de 18 KO.</p>
+            <button class="btn">Ver Perfil</button>
+        </div>
     </div>
-    
-    <footer>
-        <h4>Noticiero de Deportes - Todos los derechos reservados</h4>
-        <p>CONTACTANOS AL notideport@gmail.com - 4464258678</p>
-    </footer>
-    <script>
-        //toques
-        function crearToque(x, y) {
-          const circulo = document.createElement("div");
-          circulo.classList.add("toque-efecto");
-          circulo.style.left = `${x}px`;
-          circulo.style.top = `${y}px`;
-          document.body.appendChild(circulo);
-          setTimeout(() => circulo.remove(), 500);
-        }
-    
-        // Aplicar efecto sin interferir con enlaces
-        document.addEventListener("click", (e) => {
-          crearToque(e.clientX, e.clientY);
-        }, true);
-    
-        document.addEventListener("touchstart", (e) => {
-          const touch = e.touches[0];
-          crearToque(touch.clientX, touch.clientY);
-        }, { passive: true });
-      </script>
-</body>
+</section>
 
+</body>
 </html>
