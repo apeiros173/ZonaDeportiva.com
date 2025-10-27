@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Béisbol</title>
     <style>
-        /* Estilos base mejorados */
+        /* Estilos base */
         * {
             margin: 0;
             padding: 0;
@@ -20,9 +20,9 @@
             min-height: 100vh;
         }
         
-        /* Header con imagen estilo fútbol */
+        /* Header con imagen local */
         header {
-            background-image: url('https://images.unsplash.com/photo-1584362917163-8a6c924ae9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080'); /* imagen de béisbol */
+            background-image: url('imagenes/baseball.jpeg'); /* Imagen local */
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -33,14 +33,6 @@
             border-bottom: 3px solid #004d40;
         }
 
-        header::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0,77,64,0.35); /* overlay verde */
-            z-index: 0;
-        }
-
         header h1 {
             position: relative;
             z-index: 1;
@@ -48,6 +40,7 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
         }
         
         /* Menú con desplegable */
