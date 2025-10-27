@@ -8,22 +8,73 @@
     /* Estilo general de la sección */
     body {
         font-family: 'Arial', sans-serif;
-        background-color: #000; /* Negro de fondo */
+        background-color: #000;
         color: #fff;
         margin: 0;
         padding: 0;
     }
 
+    /* Menú simple estilo original */
+    nav {
+        background-color: #111;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    nav a, nav button {
+        color: #fff;
+        text-decoration: none;
+        padding: 5px 10px;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    nav a:hover, nav button:hover {
+        color: #FFD700;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #111;
+        min-width: 150px;
+        z-index: 1;
+        flex-direction: column;
+    }
+
+    .dropdown-content a {
+        color: #fff;
+        padding: 8px 12px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        color: #FFD700;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: flex;
+    }
+
+    /* Sección Boxeo */
     .boxeo-section {
         text-align: center;
         padding: 50px 20px;
         background: linear-gradient(180deg, #000 0%, #111 100%);
     }
 
-    /* Título dorado con borde rojo */
     .boxeo-section h1 {
-        color: #FFD700; /* Dorado */
-        border: 3px solid #FF0000; /* Rojo */
+        color: #FFD700;
+        border: 3px solid #FF0000;
         display: inline-block;
         padding: 15px 30px;
         border-radius: 10px;
@@ -32,7 +83,7 @@
         margin-bottom: 40px;
     }
 
-    /* Cards de boxeadores / información */
+    /* Cards */
     .cards {
         display: flex;
         flex-wrap: wrap;
@@ -42,7 +93,7 @@
 
     .card {
         background-color: #111;
-        border: 2px solid #FFD700; /* Dorado */
+        border: 2px solid #FFD700;
         border-radius: 15px;
         width: 250px;
         padding: 20px;
@@ -51,7 +102,7 @@
 
     .card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 0 20px #FF0000; /* Glow rojo al pasar el mouse */
+        box-shadow: 0 0 20px #FF0000;
     }
 
     .card img {
@@ -61,7 +112,7 @@
     }
 
     .card h2 {
-        color: #FFD700; /* Dorado */
+        color: #FFD700;
         margin: 10px 0;
     }
 
@@ -70,12 +121,11 @@
         font-size: 0.9em;
     }
 
-    /* Botones estilo boxeo */
     .btn {
         display: inline-block;
         margin-top: 15px;
         padding: 10px 20px;
-        background-color: #FF0000; /* Rojo */
+        background-color: #FF0000;
         color: #fff;
         border: none;
         border-radius: 8px;
@@ -86,12 +136,31 @@
     }
 
     .btn:hover {
-        background-color: #FFD700; /* Dorado */
+        background-color: #FFD700;
         color: #000;
     }
 </style>
 </head>
 <body>
+
+<!-- Menú original simple -->
+<nav>
+    <a href="index.html">Inicio</a>
+    <div class="dropdown">
+      <button>Deportes</button>
+      <div class="dropdown-content">
+        <a href="basquetbol.html">Básquetbol</a>
+        <a href="beisbol.html">Béisbol</a>
+        <a href="voleibol.html">Vóleibol</a>
+        <a href="boxeo.html">Box</a>
+      </div>
+    </div>
+    <a href="novedades.html">Novedades</a>
+    <a href="tendencias.html">Tendencias</a>
+    <a href="ultima hora.html">Última Hora</a>
+    <a href="mas relevante.html">Más Relevante</a>
+    <a href="contacto.html">Contacto</a>
+</nav>
 
 <section class="boxeo-section">
     <h1>Boxeo Destacado</h1>
