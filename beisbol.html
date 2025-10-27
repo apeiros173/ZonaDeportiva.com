@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticiero Deportes - Béisbol</title>
+    <title>Béisbol</title>
     <style>
         /* Estilos base mejorados */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -16,9 +20,9 @@
             min-height: 100vh;
         }
         
-        /* Header con imagen estilo fútbol (sin overlay) */
+        /* Header con imagen estilo fútbol */
         header {
-            background-image: url('https://images.unsplash.com/photo-1584362917163-8a6c924ae9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080');
+            background-image: url('https://images.unsplash.com/photo-1584362917163-8a6c924ae9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080'); /* imagen de béisbol */
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -29,6 +33,14 @@
             border-bottom: 3px solid #004d40;
         }
 
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,77,64,0.35); /* overlay verde */
+            z-index: 0;
+        }
+
         header h1 {
             position: relative;
             z-index: 1;
@@ -37,7 +49,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
+        
         /* Menú con desplegable */
         nav {
             display: flex;
@@ -87,7 +99,10 @@
             width: 100%;
         }
 
-        .dropdown { position: relative; display: inline-block; }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
         .dropdown-content {
             display: none;
@@ -117,10 +132,16 @@
             padding-left: 20px;
         }
 
-        .dropdown:hover .dropdown-content { display: block; }
-
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
         /* Contenido principal */
-        .contenido-principal { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .contenido-principal {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
         .seccion-beisbol {
             background-color: #fff;
@@ -174,8 +195,17 @@
             border-top: 3px solid #004d40;
         }
 
-        footer h4 { margin-bottom: 10px; font-size: 1.2em; font-weight: 600; }
-        footer p { color: #a8dadc; font-size: 1em; margin-bottom: 0; }
+        footer h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        footer p {
+            color: #a8dadc;
+            font-size: 1em;
+            margin-bottom: 0;
+        }
 
         /* Círculos de toque */
         .toque-efecto {
@@ -215,7 +245,6 @@
             <div class="dropdown-content">
                 <a href="futbol.html">Fútbol</a>
                 <a href="basquetbol.html">Básquetbol</a>
-                <a href="beisbol.html">Béisbol</a>
                 <a href="voleibol.html">Vóleibol</a>
                 <a href="boxeo.html">Box</a>
             </div>
