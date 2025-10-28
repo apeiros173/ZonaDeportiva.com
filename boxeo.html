@@ -1,150 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sección Boxeo</title>
-<style>
-    /* Estilo general de la sección */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticiero Deportes - Boxeo</title>
+  <style>
+    /* Estilos base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-        font-family: 'Arial', sans-serif;
-        background-color: #000;
-        color: #fff;
-        margin: 0;
-        padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
-    /* Menú simple estilo original */
+    /* Header */
+    header {
+      background-color: #1a1a2e;
+      color: #fff;
+      padding: 25px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      border-bottom: 3px solid #e63946;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Navegación */
     nav {
-        background-color: #111;
-        padding: 10px 20px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
+      display: flex;
+      justify-content: center;
+      background-color: #16213e;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    nav a, nav button {
-        color: #fff;
-        text-decoration: none;
-        padding: 5px 10px;
-        border: none;
-        background: none;
-        cursor: pointer;
+    nav a,
+    nav button {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      letter-spacing: 0.5px;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
-    nav a:hover, nav button:hover {
-        color: #FFD700;
+    nav a:hover,
+    nav button:hover {
+      color: #4cc9f0;
+      background: rgba(76, 201, 240, 0.1);
     }
 
+    nav a:after,
+    nav button:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #4cc9f0;
+      transition: width 0.3s;
+    }
+
+    nav a:hover:after,
+    nav button:hover:after {
+      width: 100%;
+    }
+
+    /* Dropdown */
     .dropdown {
-        position: relative;
-        display: inline-block;
+      position: relative;
+      display: inline-block;
     }
 
     .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #111;
-        min-width: 150px;
-        z-index: 1;
-        flex-direction: column;
+      display: none;
+      position: absolute;
+      background-color: #1a1a2e;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      border-radius: 4px;
+      text-align: left;
     }
 
     .dropdown-content a {
-        color: #fff;
-        padding: 8px 12px;
-        text-decoration: none;
-        display: block;
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      text-transform: uppercase;
+      font-size: 0.85em;
     }
 
     .dropdown-content a:hover {
-        color: #FFD700;
+      background-color: #4cc9f0;
+      color: #000;
     }
 
     .dropdown:hover .dropdown-content {
-        display: flex;
+      display: block;
     }
 
-    /* Sección Boxeo */
-    .boxeo-section {
-        text-align: center;
-        padding: 50px 20px;
-        background: linear-gradient(180deg, #000 0%, #111 100%);
+    /* Contenido principal */
+    .contenido-principal {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
 
-    .boxeo-section h1 {
-        color: #FFD700;
-        border: 3px solid #FF0000;
-        display: inline-block;
-        padding: 15px 30px;
-        border-radius: 10px;
-        text-transform: uppercase;
-        font-size: 2.5em;
-        margin-bottom: 40px;
+    .seccion-boxeo {
+      background-color: #fff;
+      margin-bottom: 40px;
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid #e63946;
     }
 
-    /* Cards */
-    .cards {
-        display: flex;
+    .seccion-boxeo h2 {
+      color: #1a1a2e;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      font-weight: 700;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .seccion-boxeo p {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #333;
+      padding-left: 15px;
+      position: relative;
+    }
+
+    .destacado {
+      background-color: rgba(230, 57, 70, 0.1);
+      padding: 15px;
+      border-left: 3px solid #e63946;
+      margin: 20px 0;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a2e;
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 50px;
+      border-top: 3px solid #e63946;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    footer p {
+      color: #a8dadc;
+      font-size: 1em;
+      margin-bottom: 0;
+    }
+
+    /* Efecto toque */
+    .toque-efecto {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(76, 201, 240, 0.6);
+      pointer-events: none;
+      animation: expandir 0.5s ease-out forwards;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+
+    @keyframes expandir {
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(5);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      nav {
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-    }
+        padding: 10px 0;
+      }
 
-    .card {
-        background-color: #111;
-        border: 2px solid #FFD700;
-        border-radius: 15px;
-        width: 250px;
+      nav a,
+      nav button {
+        margin: 5px 10px;
+        font-size: 0.8em;
+        padding: 6px 12px;
+      }
+
+      .seccion-boxeo {
         padding: 20px;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
+      }
 
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 20px #FF0000;
+      .seccion-boxeo h2 {
+        font-size: 1.5em;
+      }
     }
-
-    .card img {
-        width: 100%;
-        border-radius: 10px;
-        margin-bottom: 15px;
-    }
-
-    .card h2 {
-        color: #FFD700;
-        margin: 10px 0;
-    }
-
-    .card p {
-        color: #fff;
-        font-size: 0.9em;
-    }
-
-    .btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        background-color: #FF0000;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: background 0.3s, color 0.3s;
-    }
-
-    .btn:hover {
-        background-color: #FFD700;
-        color: #000;
-    }
-</style>
+  </style>
 </head>
-<body>
 
-<!-- Menú original simple -->
-<nav>
+<body>
+  <header>
+    <h1>Sección de Boxeo</h1>
+  </header>
+
+  <nav>
     <a href="index.html">Inicio</a>
     <div class="dropdown">
       <button>Deportes</button>
@@ -160,31 +261,71 @@
     <a href="ultima hora.html">Última Hora</a>
     <a href="mas relevante.html">Más Relevante</a>
     <a href="contacto.html">Contacto</a>
-</nav>
+  </nav>
 
-<section class="boxeo-section">
-    <h1>Boxeo Destacado</h1>
-    <div class="cards">
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150.png?text=Boxeador+1" alt="Boxeador 1">
-            <h2>Boxeador 1</h2>
-            <p>Campeón de peso ligero, con 20 victorias y 2 derrotas.</p>
-            <button class="btn">Ver Perfil</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150.png?text=Boxeador+2" alt="Boxeador 2">
-            <h2>Boxeador 2</h2>
-            <p>Campeón de peso medio, invicto en 15 combates.</p>
-            <button class="btn">Ver Perfil</button>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150.png?text=Boxeador+3" alt="Boxeador 3">
-            <h2>Boxeador 3</h2>
-            <p>Especialista en knockouts, con récord de 18 KO.</p>
-            <button class="btn">Ver Perfil</button>
-        </div>
-    </div>
-</section>
+  <div class="contenido-principal">
+    <article class="seccion-boxeo">
+      <h2>Resultados Recientes</h2>
+      <div style="text-align: center;">
+        <img src="imagenes/gana-el-canelo-alvares.jpeg" width="350" height="250" alt="Canelo Álvarez gana a Charlo">
+        <p>Canelo Álvarez gana por decisión unánime contra Jermall Charlo en un combate que duró los 12 rounds completos.</p>
+      </div>
+      <div class="destacado">
+        Tyson Fury vence a Oleksandr Usyk en una épica batalla de 12 rounds que mantuvo a los espectadores al borde de sus asientos.
+      </div>
+      <p>Naoya Inoue retiene su título de peso gallo ante Stephen Fulton por KO técnico en el octavo round.</p>
+    </article>
 
+    <article class="seccion-boxeo">
+      <h2>Noticias Destacadas</h2>
+      <p>¡Jake Paul desafía a Conor McGregor a una pelea histórica que podría realizarse a finales de 2024!  
+        El 16 de noviembre, Jake Paul sorprendió al mundo al vencer a Mike Tyson por decisión unánime, consolidándose como una figura mediática del boxeo.  
+        Ahora, busca enfrentar a Conor McGregor, el multicampeón irlandés de UFC.</p>
+
+      <p>El mexicano Isaac "Pitbull" Cruz busca el título mundial de peso ligero en su próximo combate programado para noviembre, enfrentando al argentino Matías Romero.  
+        Cruz, de 22 años, busca acercarse a una oportunidad por un título mundial tras su reciente racha invicta.</p>
+
+      <div class="destacado">
+        Anthony Joshua y Deontay Wilder finalmente firmaron para enfrentarse en diciembre en Arabia Saudita, en uno de los combates más esperados del año.
+      </div>
+
+      <p>La Asociación Mundial de Boxeo anuncia nuevas regulaciones para proteger la salud de los boxeadores.</p>
+    </article>
+
+    <a href="eventos.html" style="text-decoration: none; color: inherit;">
+      <article class="seccion-boxeo">
+        <h2>Próximos Eventos</h2>
+        <p>15 Octubre: Terence Crawford vs. Errol Spence Jr. - Revancha por el título welter unificado.</p>
+        <p>28 Octubre: Ryan García regresa al ring contra el excampeón mundial Javier Fortuna.</p>
+        <p>10 Noviembre: Combate femenino por el título entre Amanda Serrano y Katie Taylor II.</p>
+      </article>
+    </a>
+  </div>
+
+  <footer>
+    <h4>Noticiero de Deportes - Todos los derechos reservados</h4>
+    <p>CONTACTANOS AL notideport@gmail.com - 4464258678</p>
+  </footer>
+
+  <script>
+    // Efecto de toque
+    function crearToque(x, y) {
+      const circulo = document.createElement("div");
+      circulo.classList.add("toque-efecto");
+      circulo.style.left = `${x}px`;
+      circulo.style.top = `${y}px`;
+      document.body.appendChild(circulo);
+      setTimeout(() => circulo.remove(), 500);
+    }
+
+    document.addEventListener("click", (e) => {
+      crearToque(e.clientX, e.clientY);
+    }, true);
+
+    document.addEventListener("touchstart", (e) => {
+      const touch = e.touches[0];
+      crearToque(touch.clientX, touch.clientY);
+    }, { passive: true });
+  </script>
 </body>
 </html>
