@@ -34,7 +34,16 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       border-bottom: 3px solid #e63946;
     }
-
+/*logo de zona deportiva*/
+header .logo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 120px;  /* ajusta el tamaño si lo deseas */
+    height: auto;
+    border-radius: 8px;  /* opcional */
+    z-index: 2;  /* para que quede encima del fondo */
+}
     header h1 {
       margin: 0;
       font-size: 2.5em;
@@ -246,7 +255,8 @@
 
 <body>
   <header>
-    <h1>Noticiero Deportes - Boxeo</h1>
+    <img src="imagenes/zona deportiva.jpg" alt="Logo Zona Deportiva" class="logo">
+    <h1>Zona Deportiva - Boxeo</h1>
   </header>
 
   <nav>
@@ -333,6 +343,7 @@
   </script>
 </body>
 </html>
+
 
 
 
