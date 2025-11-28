@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactanos</title>
+    <title>Autores</title>
     <style>
         /*logo de zona deportiva*/
 header .logo {
@@ -411,89 +410,16 @@ header .logo {
     
   <main class="container my-5">
     <div class="form-container">
-      <h2 class="text-center mb-3">Contáctanos</h2>
-      <p class="text-center">¿Tienes preguntas, sugerencias o comentarios? ¡Escríbenos!</p>
+      <h2 class="text-center mb-3">Autores</h2>
+      <p class="text-center">Gracias por visitar nuestra página.</p>
+        <p class="text-center">Sabine Clear [Olga Cosme de la Cruz].</p>
+        <p class="text-center">Apeiros173[Ángel Javier Rincón Jiménez]</p>
+        <p class="text-center">Gracias por visitar nuestra página.</p>
+        <p class="text-center">Gracias por visitar nuestra página.</p>
+        <p class="text-center">Gracias por visitar nuestra página.</p>
 
-      <form action="https://formspree.io/f/xgvyvkpe" method="POST" class="needs-validation" novalidate>
-        <div class="row g-4">
-
-          <!-- Nombre -->
-          <div class="col-md-6">
-            <label for="name" class="form-label">Nombre completo <span class="text-danger">*</span></label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              name="nombre"
-              placeholder="Ej. Ana Gómez"
-              required
-              maxlength="100"
-              autocomplete="name"
-              autofocus
-            >
-            <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
-          </div>
-
-          <!-- Correo del remitente -->
-          <div class="col-md-6">
-            <label for="email" class="form-label">Correo electrónico <span class="text-danger">*</span></label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              placeholder="correo@ejemplo.com"
-              required
-              maxlength="100"
-              autocomplete="email"
-            >
-            <div class="invalid-feedback">Por favor, ingresa un correo válido.</div>
-          </div>
-
-          <!-- Mensaje -->
-          <div class="col-12">
-            <label for="message" class="form-label">Mensaje <span class="text-danger">*</span></label>
-            <textarea
-              class="form-control"
-              id="message"
-              name="mensaje"
-              rows="5"
-              placeholder="Escribe tu mensaje aquí..."
-              required
-              maxlength="1000"
-            ></textarea>
-            <div class="invalid-feedback">Por favor, escribe tu mensaje.</div>
-          </div>
-
-          <!-- Botón de envío -->
-          <div class="col-12 d-grid">
-            <button type="submit" class="btn btn-success btn-lg">Enviar mensaje</button>
-          </div>
-
-        </div>
-      </form>
     </div>
   </main>
-
-  <!-- Scripts Bootstrap + Validación -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Validación Bootstrap personalizada
-    (() => {
-      'use strict';
-      const forms = document.querySelectorAll('.needs-validation');
-      Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    })();
-  </script>
-
 </body>
 </html>
 
